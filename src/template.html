@@ -1,12 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
-</html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List</title>
+  </head>
+  <body>
+    <button id="new-item-button">+</button>
+
+    <div id="new-item-form-card" style="display: none">
+      <form action="" id="new-item-form">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" />
+        <!-- don't need a name attribute since not sending to the server yet and only one item -->
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" />
+
+        <label for="dueDate">Date:</label>
+        <input type="date" id="dueDate" name="dueDate" />
+
+        <fieldset>
+          <legend>Priority:</legend>
+          <label for="priority1"
+            ><input
+              type="radio"
+              name="priority"
+              value="high"
+              id="priority1"
+            />High</label
+          >
+          <label for="priority2"
+            ><input
+              type="radio"
+              name="priority"
+              value="medium"
+              id="priority2"
+            />Medium</label
+          >
+          <label for="priority3"
+            ><input
+              type="radio"
+              name="priority"
+              value="low"
+              id="priority3"
+            />Low</label
+          >
+        </fieldset>
+
+        <button type="submit" method="POST">Submit</button>
+      </form>
+    </div>
+  </body>
 </html>
