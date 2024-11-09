@@ -1,4 +1,6 @@
-let formDataObject = {};
+import { createItem } from "./make-item";
+
+let formDataObject;
 
 const getFormData = function () {
   const newItemForm = document.querySelector("#new-item-form");
@@ -7,10 +9,13 @@ const getFormData = function () {
     event.preventDefault();
     const formData = new FormData(this);
 
-    formDataObject.title = formData.get("title");
-    formDataObject.description = formData.get("description");
-    formDataObject.dueDate = formData.get("dueDate");
-    formDataObject.priority = formData.get("priority");
+    formDataObject = createItem(
+      formData.get("title"),
+      formData.get("description"),
+      formData.get("dueDate"),
+      formData.get("priority")
+    );
+
     document.dispatchEvent(new CustomEvent("formDataCaptured"));
   });
 };

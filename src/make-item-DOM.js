@@ -1,7 +1,5 @@
 import { createItem } from "./make-item";
 
-const formfunc = function () {};
-
 const newItemDOM = function () {
   const newItem = document.querySelector("#new-item-button");
   const formCard = document.querySelector("#new-item-form-card");
