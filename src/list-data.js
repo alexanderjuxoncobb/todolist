@@ -1,8 +1,9 @@
 let homeListData = [];
-let NEWListData = [];
+
+let listDataObject = { homeListData };
 
 const addData = function (currentData, newData) {
-  currentData.push(newData);
+  listDataObject[currentData].push(newData);
 };
 
-export { addData, homeListData, NEWListData };
+export { addData, listDataObject };

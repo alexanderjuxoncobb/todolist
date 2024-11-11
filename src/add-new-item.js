@@ -6,7 +6,7 @@ const newItemForm = document.querySelector("#new-item-form");
 
 const addNewItem = function (whichList) {
   document.addEventListener("formDataCaptured", function () {
-    listData.addData(listData[whichList], formDataObject);
+    listData.addData(whichList, formDataObject);
     formCard.style.display = "none";
     newItemForm.reset();
 

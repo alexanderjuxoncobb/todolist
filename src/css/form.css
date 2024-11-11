@@ -1,5 +1,6 @@
 #new-item-form-card {
-  width: 300px;
+  width: 250px;
+  padding: 10px;
 }
 
 #new-item-form {
@@ -19,7 +20,7 @@
 #new-item-form input[type="date"] {
   padding: 5px;
   font-size: 1rem;
-  width: 250px;
+  width: 220px;
 }
 
 #new-item-form fieldset {
@@ -39,7 +40,6 @@
   margin-bottom: 5px;
 }
 
-button {
-  margin: 20px;
-  width: 200px;
+#new-item-list label {
+  font-weight: bold;
 }
