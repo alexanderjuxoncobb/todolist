@@ -10,6 +10,7 @@ div#homepage-container {
 
 #sidebar-container {
   padding: 5px;
+  background-color: rgb(255, 86, 86);
 }
 
 button {
@@ -17,16 +18,55 @@ button {
   width: 200px;
 }
 
+.list-title {
+  background-color: rgb(89, 177, 244);
+  margin: 5px 0px;
+  padding-left: 10px;
+  font-weight: bold;
+}
+
 .list-item .description {
-  background-color: rgb(203, 203, 203);
+  background-color: rgb(229, 229, 229);
+  border-bottom: 2px solid;
+}
+
+.list-item .description-info {
+  background-color: rgb(229, 229, 229);
+  grid-column: span 3;
+  border-bottom: 2px solid;
+  padding-left: 5px;
+  padding-top: 2px;
 }
 
 .list-item {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  background-color: rgb(0, 244, 199);
+  grid-template-columns: 0.2fr repeat(3, 1fr);
+  background-color: rgb(254, 205, 255);
 }
 
-.list-item .description {
-  grid-column: span 3;
+.list-item > *:not(:last-child) {
+  padding: 2px 0px 2px 4px;
+  border-left: 1px solid;
+}
+
+.list-item .priority {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-item .priority button {
+  width: 20px;
+  height: 20px;
+  margin: 0px 5px 0px;
+}
+
+.list-item .title {
+  grid-column: span 2;
+}
+
+#todo-list {
+  border: 2px black solid;
+  border-bottom: none;
+  border-left: none;
 }

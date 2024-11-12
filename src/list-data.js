@@ -14,4 +14,8 @@ const addList = function (newList, listDataObject) {
   listDataObject[newList] = [];
 };
 
-export { addData, addList, listDataObject };
+const deleteItem = function (i, currentData, listDataObject) {
+  listDataObject[currentData].splice(i, 1);
+};
+
+export { addData, addList, deleteItem, listDataObject };

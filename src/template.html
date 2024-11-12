@@ -16,7 +16,7 @@
             <input type="text" id="title" name="title" />
             <!-- don't need a name attribute since not sending to the server yet and only one item -->
             <label for="description">Description:</label>
-            <input type="text" id="description" name="description" />
+            <textarea id="description" name="description" rows="4"> </textarea>
 
             <label for="dueDate">Date:</label>
             <input type="date" id="dueDate" name="dueDate" />
@@ -52,7 +52,7 @@
             <button type="submit" method="POST">Submit</button>
           </form>
         </div>
-        <div id="homeList">Home</div>
+        <div id="homeList" class="list-title">Home</div>
         <div id="new-item-list-card" style="display: none">
           <form action="" id="new-item-list">
             <label for="list-title">Title:</label>

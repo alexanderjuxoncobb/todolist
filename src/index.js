@@ -1,6 +1,7 @@
 import "./css/style.css";
 import "./css/form.css";
 import "./css/homepage.css";
+import "./css/deleteButton.css";
 
 import { createItem } from "./make-item";
 import { newItemDOM } from "./make-item-DOM";
@@ -16,7 +17,7 @@ import {
 
 newItemDOM();
 getFormData();
-addNewList(); 
+addNewList();
 addNewItem();
 listDOM(); // Adds the event listeners to display the lists when a tab is clicked.
 homeListEventListener();

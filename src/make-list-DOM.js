@@ -23,6 +23,7 @@ const addNewList = function () {
         const newTitle = document.createElement("div");
         newTitle.textContent = listTitle;
         newTitle.id = listTitle + "List";
+        newTitle.className = "list-title";
 
         newTitle.addEventListener("click", () => {
           selectedListId = newTitle.id;
