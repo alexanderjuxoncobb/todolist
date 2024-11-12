@@ -13,13 +13,18 @@ const handleFormDataCapture = function () {
 
   document.dispatchEvent(new CustomEvent("dataAdded"));
 };
-let currentHandler;
+
 const addNewItem = function () {
-  if (currentHandler) {
-    document.removeEventListener("formDataCaptured", currentHandler);
-  }
-  currentHandler = () => handleFormDataCapture();
-  document.addEventListener("formDataCaptured", currentHandler);
+  document.addEventListener("formDataCaptured", handleFormDataCapture);
 };
+
+// let currentHandler;
+// const addNewItem = function () {
+//   if (currentHandler) {
+//     document.removeEventListener("formDataCaptured", currentHandler);
+//   }
+//   currentHandler = () => handleFormDataCapture();
+//   document.addEventListener("formDataCaptured", currentHandler);
+// };
 
 export { addNewItem };

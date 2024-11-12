@@ -1,8 +1,8 @@
 export const createItem = function (
   title = "",
-  description = "",
   dueDate = "",
-  priority = ""
+  priority = "",
+  description = ""
 ) {
-  return { title, description, dueDate, priority };
+  return { title, dueDate, priority, description };
 };

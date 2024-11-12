@@ -9,10 +9,28 @@ const updateList = function () {
 
   listData.listDataObject[whichList + "Data"].forEach((element) => {
     const listItem = document.createElement("div");
-    listItem.textContent = JSON.stringify(element);
+    listItem.className = "list-item";
+
+    for (let key in element) {
+      const itemInfo = document.createElement("div");
+      itemInfo.className = key;
+
+      itemInfo.innerHTML =
+        `<b>${key.charAt(0).toUpperCase()}` +
+        `${key.slice(1)}:</b> ${element[key]}`;
+      listItem.appendChild(itemInfo);
+    }
+
+    // listItem.textContent = JSON.stringify(element);
     todoListDiv.appendChild(listItem);
   });
 };
+
+const listDOM = function () {
+  document.addEventListener("dataAdded", updateList);
+  document.addEventListener("changeList", updateList);
+};
+export { listDOM };
 
 // WAY 1:
 
@@ -41,9 +59,3 @@ const updateList = function () {
 //   document.addEventListener("changeList", handler);
 // };
 // export { listDOM };
-
-const listDOM = function () {
-  document.addEventListener("dataAdded", updateList);
-  document.addEventListener("changeList", updateList);
-};
-export { listDOM };

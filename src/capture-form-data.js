@@ -11,10 +11,14 @@ const getFormData = function () {
 
     formDataObject = createItem(
       formData.get("title"),
-      formData.get("description"),
       formData.get("dueDate"),
-      formData.get("priority")
+      formData.get("priority"),
+      formData.get("description")
     );
+
+    if (!formDataObject.priority) {
+      formDataObject.priority = "Not Selected";
+    }
 
     document.dispatchEvent(new CustomEvent("formDataCaptured"));
   });

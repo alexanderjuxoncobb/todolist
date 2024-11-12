@@ -16,7 +16,7 @@ import {
 
 newItemDOM();
 getFormData();
-addNewList();
+addNewList(); 
 addNewItem();
 listDOM(); // Adds the event listeners to display the lists when a tab is clicked.
 homeListEventListener();
