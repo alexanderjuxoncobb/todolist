@@ -3,7 +3,15 @@ let homeListData = [];
 let listDataObject = { homeListData };
 
 const addData = function (currentData, newData) {
-  listDataObject[currentData].push(newData);
+  if (listDataObject[currentData]) {
+    listDataObject[currentData].push(newData);
+  } else {
+    console.error(`${currentData} does not exist in listDataObject`);
+  }
 };
 
-export { addData, listDataObject };
+const addList = function (newList, listDataObject) {
+  listDataObject[newList] = [];
+};
+
+export { addData, addList, listDataObject };

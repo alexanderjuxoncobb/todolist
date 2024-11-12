@@ -1,37 +1,47 @@
+import { addList, listDataObject } from "./list-data";
+
 const newItemListButton = document.querySelector("#new-list-button");
 const newItemListCard = document.querySelector("#new-item-list-card");
 const newItemListForm = document.querySelector("#new-item-list");
 
 let listTitle;
-let selectedListId;
+let selectedListId = "homeList";
 
 const addNewList = function () {
   newItemListButton.addEventListener("click", function () {
     newItemListCard.style.display = "";
 
-    newItemListForm.addEventListener("submit", function () {
+    newItemListForm.addEventListener("submit", function (event) {
       event.preventDefault();
 
       const listTitleFormData = new FormData(this);
       listTitle = listTitleFormData.get("list-title");
 
-      const newTitle = document.createElement("div");
-      newTitle.textContent = listTitle;
-      newTitle.id = listTitle + "-list";
+      if (listTitle) {
+        addList(listTitle + "ListData", listDataObject);
 
-      newTitle.addEventListener("click", () => (selectedListId = newTitle.id));
+        const newTitle = document.createElement("div");
+        newTitle.textContent = listTitle;
+        newTitle.id = listTitle + "List";
 
-      newItemListButton.parentNode.insertBefore(newTitle, newItemListButton);
-      newItemListCard.style.display = "none";
-      newItemListForm.reset();
+        newTitle.addEventListener("click", () => {
+          selectedListId = newTitle.id;
+
+          document.dispatchEvent(new CustomEvent("changeList"));
+        });
+
+        newItemListButton.parentNode.insertBefore(newTitle, newItemListButton);
+        newItemListCard.style.display = "none";
+        newItemListForm.reset();
+      }
     });
   });
 };
 
 const homeListEventListener = function () {
-  document.querySelector("#home-list").addEventListener("click", function () {
-    
-    selectedListId = "home-list";
+  document.querySelector("#homeList").addEventListener("click", function () {
+    selectedListId = "homeList";
+    document.dispatchEvent(new CustomEvent("changeList"));
   });
 };
 

@@ -14,11 +14,14 @@ import {
   selectedListId,
 } from "./make-list-DOM";
 
-console.log(createItem("sam"));
-
 newItemDOM();
 getFormData();
 addNewList();
-addNewItem("homeListData");
-listDOM("homeListData");
+addNewItem();
+listDOM(); // Adds the event listeners to display the lists when a tab is clicked.
 homeListEventListener();
+
+document.addEventListener("changeList", function () {
+  addNewItem();
+  //   listDOM();
+});
