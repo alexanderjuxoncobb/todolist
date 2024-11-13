@@ -23,6 +23,10 @@
   width: 100%;
 }
 
+input:focus {
+  outline: none;
+}
+
 #new-item-form fieldset {
   display: flex;
   flex-direction: row;

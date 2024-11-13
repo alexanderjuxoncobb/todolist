@@ -23,7 +23,10 @@ const updateList = function () {
       const itemInfo = document.createElement("div");
       itemInfo.className = key;
 
+      let type = "text";
+
       if (key === "description") {
+        type = "textarea";
         element[key] = element[key].replace(/\n/g, "<br>");
         itemInfo.innerHTML =
           `<b>${key.charAt(0).toUpperCase()}` + `${key.slice(1)}:</b>`;
@@ -33,11 +36,17 @@ const updateList = function () {
         descriptionInfo.className = key + "-info";
         descriptionInfo.innerHTML = `${element[key]}`;
         listItem.appendChild(descriptionInfo);
+
+        descriptionInfo.addEventListener("click", () =>
+          makeEditable(descriptionInfo, element, key, index, whichList, type)
+        );
       } else {
         itemInfo.innerHTML =
           `<span><b>${key.charAt(0).toUpperCase()}` +
           `${key.slice(1)}:</b> ${element[key]}</span>`;
+
         if (key === "priority") {
+          type = "select";
           if (element[key] === "High") {
             itemInfo.style.backgroundColor = "red";
           } else if (element[key] === "Medium") {
@@ -47,15 +56,64 @@ const updateList = function () {
           }
 
           itemInfo.appendChild(deleteButton);
+        } else if (key === "dueDate") {
+          type = "date";
         }
 
         listItem.appendChild(itemInfo);
+        itemInfo.addEventListener("click", () =>
+          makeEditable(itemInfo, element, key, index, whichList, type)
+        );
       }
     }
 
     // listItem.textContent = JSON.stringify(element);
     todoListDiv.appendChild(listItem);
   });
+};
+
+const makeEditable = (div, element, key, index, whichList, type) => {
+  let input;
+  if (type === "textarea") {
+    input = document.createElement("textarea");
+    input.value = element[key].replace(/<br>/g, "\n"); // Replace <br> with newlines
+  } else if (type === "select") {
+    input = document.createElement("select");
+    const options = ["High", "Medium", "Low"];
+    options.forEach((optionValue) => {
+      const option = document.createElement("option");
+      option.value = optionValue;
+      option.textContent = optionValue;
+      if (element[key] === optionValue) {
+        option.selected = true;
+      }
+      input.appendChild(option);
+    });
+  } else if (type === "date") {
+    input = document.createElement("input");
+    input.type = "date";
+    input.value = element[key];
+  } else {
+    input = document.createElement("input");
+    input.type = "text";
+    input.value = element[key];
+  }
+
+  input.className = div.className;
+  div.replaceWith(input);
+
+  const saveChanges = function () {
+    element[key] = input.value;
+    listData.listDataObject[whichList + "Data"][index] = element;
+    updateList();
+  };
+  input.addEventListener("blur", saveChanges);
+  input.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" && type !== "textarea") {
+      saveChanges();
+    }
+  });
+  input.focus();
 };
 
 const listDOM = function () {

@@ -11,6 +11,8 @@ div#homepage-container {
 #sidebar-container {
   padding: 5px;
   background-color: rgb(255, 86, 86);
+  display: flex;
+  flex-direction: column;
 }
 
 button {
@@ -20,9 +22,18 @@ button {
 
 .list-title {
   background-color: rgb(89, 177, 244);
-  margin: 5px 0px;
+  margin: 5px 0;
   padding-left: 10px;
   font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+  width: 200px;
+  align-self: center;
+}
+
+.list-title:hover {
+  background-color: rgb(70, 150, 220); /* Slightly darker shade */
+  transform: scale(1.05); /* Slightly larger on hover */
 }
 
 .list-item .description {
@@ -42,6 +53,14 @@ button {
   display: grid;
   grid-template-columns: 0.2fr repeat(3, 1fr);
   background-color: rgb(254, 205, 255);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+  align-self: center;
+}
+
+.list-item:hover {
+  background-color: rgb(70, 150, 220); /* Slightly darker shade */
+  /* transform: scale(1.01); Slightly larger on hover */
 }
 
 .list-item > *:not(:last-child) {
