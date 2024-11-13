@@ -15,7 +15,7 @@ const updateList = function () {
     const deleteButton = createDeleteButton();
 
     deleteButton.addEventListener("click", function () {
-      listData.deleteItem(index, whichList + "Data", listData.listDataObject);
+      listData.deleteItem(index, whichList + "Data");
       updateList();
     });
 
@@ -106,6 +106,7 @@ const makeEditable = (div, element, key, index, whichList, type) => {
     element[key] = input.value;
     listData.listDataObject[whichList + "Data"][index] = element;
     updateList();
+    listData.saveDataToLocalStorage();
   };
   input.addEventListener("blur", saveChanges);
   input.addEventListener("keydown", function (e) {
@@ -120,7 +121,7 @@ const listDOM = function () {
   document.addEventListener("dataAdded", updateList);
   document.addEventListener("changeList", updateList);
 };
-export { listDOM };
+export { listDOM, updateList };
 
 // WAY 1:
 

@@ -1,4 +1,4 @@
-import { addList, listDataObject } from "./list-data";
+import { addList, listDataObject, saveDataToLocalStorage } from "./list-data";
 
 const newItemListButton = document.querySelector("#new-list-button");
 const newItemListCard = document.querySelector("#new-item-list-card");
@@ -6,6 +6,10 @@ const newItemListForm = document.querySelector("#new-item-list");
 
 let listTitle;
 let selectedListId = "homeList";
+
+const setSelectedListId = (newId) => {
+  selectedListId = newId;
+};
 
 const addNewList = function () {
   newItemListButton.addEventListener("click", function () {
@@ -18,7 +22,8 @@ const addNewList = function () {
       listTitle = listTitleFormData.get("list-title");
 
       if (listTitle) {
-        addList(listTitle + "ListData", listDataObject);
+        addList(listTitle + "ListData");
+        saveDataToLocalStorage();
 
         const newTitle = document.createElement("div");
         newTitle.textContent = listTitle;
@@ -46,4 +51,10 @@ const homeListEventListener = function () {
   });
 };
 
-export { addNewList, listTitle, homeListEventListener, selectedListId };
+export {
+  addNewList,
+  listTitle,
+  homeListEventListener,
+  selectedListId,
+  setSelectedListId,
+};
